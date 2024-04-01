@@ -23,6 +23,17 @@
 ​
 #### 設計書📝
 後ほど作成予定。※進歩に合わせて随時更新
+- SSC要件定義    [SSC要件定義.pdf](https://github.com/pklemy/SSC/files/14825777/SSC.pdf)
+
+
+- ER図
+  
+![SSC drawio](https://github.com/pklemy/SSC/assets/147229077/6b2f4815-f62e-4bcc-89f1-705df3041d39)
+
+- テーブル定義書
+  
+https://docs.google.com/spreadsheets/d/1o7X-RltHR-tt8rI8R2pbwReQ9OjSj2oJ/edit?usp=sharing&ouid=102497507754621412362&rtpof=true&sd=true
+
 
 ​
 ### 開発環境🌐
