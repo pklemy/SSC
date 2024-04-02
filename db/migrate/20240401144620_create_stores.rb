@@ -1,9 +1,10 @@
 class CreateStores < ActiveRecord::Migration[6.1]
   def change
     create_table :stores do |t|
-      t.string :store_name, null:folse
-      t.string :store_address, null:folse
-      t.string :stroe_phone, null:folse
+      t.references :employee, foreigh_key: true
+      t.string :name, null:false
+      t.string :address, null:false
+      t.string :phone, null:false
 
       t.timestamps
     end
