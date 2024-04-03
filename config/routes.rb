@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   
   namespace :employees do
   get "homes/top" 
-  resources :posts, except: [:new, :edit]
+  resources :posts, except: [:edit]
+  resources :stores
   end
   
   devise_for :employees, controllers: {

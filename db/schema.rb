@@ -71,10 +71,14 @@ ActiveRecord::Schema.define(version: 2024_04_03_112039) do
   create_table "posts", force: :cascade do |t|
     t.integer "employee_id"
     t.integer "store_id"
+    t.integer "good_id", null: false
+    t.string "title", null: false
+    t.string "body", null: false
     t.integer "genre", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["employee_id"], name: "index_posts_on_employee_id"
+    t.index ["good_id"], name: "index_posts_on_good_id"
     t.index ["store_id"], name: "index_posts_on_store_id"
   end
 
@@ -105,5 +109,9 @@ ActiveRecord::Schema.define(version: 2024_04_03_112039) do
   add_foreign_key "goods", "employees"
   add_foreign_key "goods", "posts"
   add_foreign_key "goods", "stores"
+  add_foreign_key "posts", "employees"
+  add_foreign_key "posts", "goods"
+  add_foreign_key "posts", "stores"
+  add_foreign_key "stores", "employees"
   add_foreign_key "vendors", "stores"
 end
