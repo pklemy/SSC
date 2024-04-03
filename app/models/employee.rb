@@ -6,7 +6,7 @@ class Employee < ApplicationRecord
   
   scope :owners, -> { includes(:stores).where.not('stores.employee_id': nil) }
   has_many :stores
-  
+  has_many :posts
   def store
     stores.first
   end

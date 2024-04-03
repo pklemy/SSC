@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
   
+  
   namespace :admins do
   get 'homes/top'
   end
   
   namespace :employees do
-    get "homes/top" 
+  get "homes/top" 
+  resources :posts, except: [:new, :edit]
   end
   
   devise_for :employees, controllers: {

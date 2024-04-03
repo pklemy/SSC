@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_04_01_152412) do
+ActiveRecord::Schema.define(version: 2024_04_03_112039) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -60,12 +60,22 @@ ActiveRecord::Schema.define(version: 2024_04_01_152412) do
   create_table "goods", force: :cascade do |t|
     t.integer "employee_id", null: false
     t.integer "store_id", null: false
-    t.integer "comment_id", null: false
+    t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["comment_id"], name: "index_goods_on_comment_id"
     t.index ["employee_id"], name: "index_goods_on_employee_id"
+    t.index ["post_id"], name: "index_goods_on_post_id"
     t.index ["store_id"], name: "index_goods_on_store_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer "employee_id"
+    t.integer "store_id"
+    t.integer "genre", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["employee_id"], name: "index_posts_on_employee_id"
+    t.index ["store_id"], name: "index_posts_on_store_id"
   end
 
   create_table "stores", force: :cascade do |t|
@@ -92,8 +102,8 @@ ActiveRecord::Schema.define(version: 2024_04_01_152412) do
   add_foreign_key "comments", "posts"
   add_foreign_key "employee_stores", "employees"
   add_foreign_key "employee_stores", "stores"
-  add_foreign_key "goods", "comments"
   add_foreign_key "goods", "employees"
+  add_foreign_key "goods", "posts"
   add_foreign_key "goods", "stores"
   add_foreign_key "vendors", "stores"
 end
