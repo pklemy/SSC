@@ -1,4 +1,13 @@
 Rails.application.routes.draw do
+  
+  namespace :admins do
+  get 'homes/top'
+  end
+  
+  namespace :employees do
+    get "homes/top" 
+  end
+  
   devise_for :employees, controllers: {
         sessions: 'employees/sessions'
       }

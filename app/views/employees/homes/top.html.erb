@@ -1,0 +1,11 @@
+<h1>homes top</h1>
+
+<% if employee_signed_in? %>
+ログイン中
+<% else %>
+ログアウト中
+<% end %>
+
+<!--ボタンを作る記述-->
+<%= link_to "ログアウト",destroy_employee_session_path, method: :delete %>
+<%= link_to "ログイン", new_employee_session_path %>
