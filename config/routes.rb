@@ -1,14 +1,14 @@
 Rails.application.routes.draw do
-  
-  
+  root 'employees/homes#top'
+  get 'hoge', to:'employees/homes#top', as:'piyopiyo'
   namespace :admins do
-  get 'homes/top'
+    get 'homes/top'
   end
   
   namespace :employees do
-  get "homes/top" 
-  resources :posts, except: [:edit]
-  resources :stores
+    get 'homes/top'
+    resources :posts
+    resources :stores
   end
   
   devise_for :employees, controllers: {

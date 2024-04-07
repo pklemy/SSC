@@ -1,4 +1,6 @@
 <h1>homes top</h1>
+<h1>SSC</h1>
+<h2>飲食店用 Staff shearing community</h2>
 
 <% if employee_signed_in? %>
 ログイン中
@@ -9,3 +11,4 @@
 <!--ボタンを作る記述-->
 <%= link_to "ログアウト",destroy_employee_session_path, method: :delete %>
 <%= link_to "ログイン", new_employee_session_path %>
+<%= link_to 'piyopiyoアクセス', employees_posts_path %>

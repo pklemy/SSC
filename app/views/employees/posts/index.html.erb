@@ -2,7 +2,10 @@
 <h2>Employees Post </h2>
 
 <% @posts.each do |post| %>
-  <h2><%= post.title %></h2>
-  <p><%= post.body %></p>
+<span><%= post.employee.email %></span>
+  <p>タイトル</p>
+  <span><%= post.title %></span>
+  <span><%= post.body %></span>
 <% end %>
 <!--<%#= link_to 'posts', employees_posts_path %>-->
+<%= link_to 'piyopiyoアクセス', piyopiyo_path %>

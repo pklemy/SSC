@@ -6,6 +6,8 @@ class Employees::PostsController < ApplicationController
   
   def create
     post = Post.new(post_params)
+    #byebug
+    post.employee_id = current_employee.id
     post.save
     redirect_to '/employees/posts'
   end
@@ -15,8 +17,12 @@ class Employees::PostsController < ApplicationController
   end
 
   def show
+    @post =Post.find(params[:id])
   end
-
+ 
+  def edit
+    @post =Post.find(params[:id])
+  end
   def update
   end
   
