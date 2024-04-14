@@ -1,4 +1,19 @@
 
-<h2>Employees stores new</h2>
-
-<h3>この画面いるかわからない</h3>
+<h2>店舗登録</h2>
+<%= form_with model: @store, url: employees_stores_path do |f| %>
+<div class="field">
+  <%= f.label :店舗名 %><br>
+  <%= f.text_field :name %>
+</div>
+  
+<div class="field">
+  <%= f.label :店舗住所 %><br>
+  <%= f.text_field :address %>
+  </div>
+  
+<div class="field">
+  <%= f.label :店舗電話番号 %><br>
+  <%= f.text_field :phone %>
+  </div>
+  <%= f.submit '登録' %>
+<% end %>

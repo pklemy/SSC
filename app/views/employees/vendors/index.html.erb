@@ -1,0 +1,17 @@
+<h1>業者一覧</h1>
+<table>
+  <tr>
+    <th>業者名</th>
+    <th>発注先URL</th>
+    <th>電話番号</th>
+    <th>担当者名</th>
+  </tr>
+  <% @vendors.each do |vendor| %>
+  <tr>
+      <td><%= link_to vendor.vendor_name, employees_vendor_path(vendor.id) %></td>
+      <td><%= vendor.url %></td>
+      <td><%= vendor.phone %></td>
+      <td><%= vendor.name %></td>
+    </tr>
+  <% end %>
+</table>

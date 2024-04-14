@@ -1,11 +1,13 @@
 <h1>投稿一覧　index</h1>
 <h2>Employees Post </h2>
+<table>
+  <tr><th>mail</th><th>タイトル</th><th>内容</th></tr>
+  <% @posts.each do |post| %>
+    <tr>
+      <td><%= post.employee.email %></td><td><%= link_to post.title, employees_post_path(post.id) %></td><td><%= post.body %></td>
+    </tr>
+  <% end %>
+</table>
 
-<% @posts.each do |post| %>
-<span><%= post.employee.email %></span>
-  <p>タイトル</p>
-  <span><%= post.title %></span>
-  <span><%= post.body %></span>
-<% end %>
 <!--<%#= link_to 'posts', employees_posts_path %>-->
-<%= link_to 'piyopiyoアクセス', piyopiyo_path %>
+<!--<%#= link_to 'piyopiyoアクセス', piyopiyo_path %>-->

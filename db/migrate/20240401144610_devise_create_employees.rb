@@ -33,6 +33,7 @@ class DeviseCreateEmployees < ActiveRecord::Migration[6.1]
       # t.datetime :locked_at
       t.string :name
       t.string :phone_number
+      t.boolean :store_admin, default: false
 
       t.timestamps null: false
     end

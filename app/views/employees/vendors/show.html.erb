@@ -1,0 +1,14 @@
+<h1>業者詳細</h1>
+
+<table>
+  <tr>
+    <th><%= @vendor.name %></th>
+    <th><%= @vendor.url %></th>
+    <th><%= @vendor.phone %></th>
+    <th><%= @vendor.name %></th>
+  </tr>
+  <%= link_to "編集", edit_employees_vendor_path(@vendor.id) %>
+  <% if @vendor.employee == current_employee %>
+    <%= link_to "削除", employees_vendors_path(@vendor.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+  <% end %>
+</table>

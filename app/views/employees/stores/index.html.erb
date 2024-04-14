@@ -1,6 +1,10 @@
-<h1>店舗登録画面</h1>
-<h2>Employees stores index</h2>
+<h1>店舗一覧</h1>
+<table>
+  <tr><th>店舗</th><th>店舗住所</th><th>店舗電話番号</th></tr>
+  <% @stores.each do |store| %>
+  <tr>
+      <td><%= store.name %></td><td><%= link_to store.address, employees_store_path(store.id) %></td><td><%= store.phone %></td>
+    </tr>
+  <% end %>
+</table>
 
-<h3>店舗名</h3>
-<h3>住所</h3>
-<h3>電話番号(ハイフンなし)</h3>

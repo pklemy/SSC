@@ -9,7 +9,7 @@ class Employees::PostsController < ApplicationController
     #byebug
     post.employee_id = current_employee.id
     post.save
-    redirect_to '/employees/posts'
+    redirect_to employees_posts_path
   end
 
   def index
@@ -23,10 +23,17 @@ class Employees::PostsController < ApplicationController
   def edit
     @post =Post.find(params[:id])
   end
+  
   def update
+    @post =Post.find(params[:id])
+    @post.update(post_params)
+    redirect_to employees_post_path(@post.id)
   end
   
   def destroy
+    @post =Post.find(params[:id])
+    @post.destroy  #データを削除
+    redirect_to employees_posts_path #post indexページへ
   end
   
    private
