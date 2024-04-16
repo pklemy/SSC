@@ -3,7 +3,7 @@
   <tr><th>店舗</th><th>店舗住所</th><th>店舗電話番号</th></tr>
   <% @stores.each do |store| %>
   <tr>
-      <td><%= store.name %></td><td><%= link_to store.address, employees_store_path(store.id) %></td><td><%= store.phone %></td>
+      <td><%= store.name %></td><td><%= link_to store.address, store_path(store.id) %></td><td><%= store.phone %></td>
     </tr>
   <% end %>
 </table>

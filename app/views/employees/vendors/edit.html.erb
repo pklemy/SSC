@@ -1,2 +1,3 @@
-<h1>Employees::Vendor#edit</h1>
-<p>Find me in app/views/employees/vendor/edit.html.erb</p>
+<h2>外注先編集</h2>
+
+<%= render "employees/vendors/form", vendor: @vendor, submit_text: "編集", target_url: vendor_path(@vendor) %>

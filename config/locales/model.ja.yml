@@ -1,0 +1,7 @@
+ja:
+  enums:
+    post:
+      genre:
+        shift: シフト
+        vendor: 業者
+        lost_item: 忘れ物

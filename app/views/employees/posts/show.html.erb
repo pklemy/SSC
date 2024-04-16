@@ -1,14 +1,65 @@
 <h1>投稿Post show</h1>
 
-<div>
-<span><%= @post.employee.email %></span>
-  <p>タイトル</p>
-  <p>ユーザーネーム：<%= @post.employee.name %></p>
-  <span><%= @post.title %></span>
-  <span><%= @post.body %></span>
-  <p>投稿日時：<%= @post.created_at.strftime('%Y/%m/%d') %></p>
-  <%= link_to "編集", edit_employees_post_path(@post.id) %>
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <th>タイトル</th>
+      <td><%= @post.title %></td>
+    </tr>
+    <tr>
+      <th>ユーザーネーム</th>
+      <td><%= @post.body %></td>
+    </tr>
+    <tr>
+      <th>投稿日時：</th>
+      <td><%= l(@post.created_at, format: :long) %></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="d-flex justify-content-start">
+  <%= link_to "編集", edit_post_path(@post.id), class: "btn btn-warning mr-2" %>
   <% if @post.employee == current_employee %>
-    <%= link_to "削除", employees_post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+    <%= link_to "投稿削除", post_path(@post.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-danger mr-2" %>
   <% end %>
+  <% if current_employee.good?(@post) %>
+    <%= link_to "Good取り消し", post_good_path(@post), method: :delete, class: "btn btn-secondary mr-2" %>
+  <% else %>
+    <%= link_to "Good", post_good_path(@post), method: :post, class: "btn btn-success mr-2" %>
+  <% end %>
+  <%= link_to "投稿一覧に戻る", store_posts_path(@store), class: "btn btn-primary" %>
 </div>
+
+<div class="row">
+  <div class="col-md-6">
+    <h4 class="mt-2">チェック済み</h4>
+    <div class="card">
+      <div class="card-body">
+        <% @post.good_employees.each do |employee| %>
+          <span class="badge badge-primary"><%= employee.name %></span>
+        <% end %>
+      </div>
+    </div>
+    <%= form_with model: [@post, @comment], class: "mt-4" do |f| %>
+      <%= f.text_area :text, rows: '5', placeholder: "コメントをここに", class: "form-control mb-3" %>
+      <%= f.hidden_field :post_id, value: @post.id %>
+      <%= f.submit "送信する", class: "btn btn-success btn-block" %>
+    <% end %>
+  </div>
+  
+  <div class="col-md-6">
+    <p>コメント件数：<%= @post.comments.count %></p>
+    <ul>
+      <% @post.comments.each do |comment| %>
+        <li>
+          <%= comment.employee.name %>
+          <%= l(comment.created_at, format: :long) %><%= comment.text %>
+          <% if comment.employee == current_employee %>
+            <%= link_to "コメントを削除", comment_path(comment), method: :delete %>
+          <% end %>
+        </li>
+     <% end %>
+    </ul>
+  </div>
+</div>
+

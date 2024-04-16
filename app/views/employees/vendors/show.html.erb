@@ -7,8 +7,10 @@
     <th><%= @vendor.phone %></th>
     <th><%= @vendor.name %></th>
   </tr>
-  <%= link_to "編集", edit_employees_vendor_path(@vendor.id) %>
-  <% if @vendor.employee == current_employee %>
-    <%= link_to "削除", employees_vendors_path(@vendor.id), method: :delete, "data-confirm" => "本当に削除しますか？" %>
+  <%= link_to "編集", edit_vendor_path(@vendor.id) %>
+  <% if current_employee.stores.include?(@vendor.store) %>
+    <%= link_to "削除", vendor_path(@vendor), method: :delete, "data-confirm" => "本当に削除しますか？" %>
   <% end %>
 </table>
+
+<%= link_to "業者", store_vendors_path(@store), class: "btn btn-primary" %>

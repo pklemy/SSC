@@ -27,28 +27,56 @@
       
     <div class = "main top-main">
      <div class = "top-message">
-      <% if employee_signed_in? %>
-      <li>
-       <%= link_to "投稿", new_employees_post_path %>
-      </li>
-      <li>
-        <%= link_to "ホーム", employees_top_path %>
-      </li>
-      <li>
-        <%= link_to "ログアウト", destroy_employee_session_path, method: :delete %>
-      </li>
+       
+    <% if employee_signed_in? %>
+       <% if current_employee.store_admin? %>
+       <% end %>
+
+       <li>
+        <%= link_to "ホーム", Rails.application.routes.url_helpers.top_path %>
+       </li>
+       <li>
+        <%= link_to "ログアウト", Rails.application.routes.url_helpers.destroy_employee_session_path, method: :delete %>
+       </li>
       <% else %>
-      <li>
-        <%= link_to "会員登録", new_employee_registration_path %>
-      </li>
-      <li>
-        <%= link_to "ログイン", new_employee_session_path %>
-      </li>
+       <li>
+        <%= link_to "会員登録", Rails.application.routes.url_helpers.new_employee_registration_path %>
+       </li>
+       <li>
+        <%= link_to "ログイン", Rails.application.routes.url_helpers.new_employee_session_path %>
+       </li>
       
-      <% end %>
+    <% end %>
      </div>
     </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Navbar</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <% if employee_signed_in? %>
+            <li class="nav-item active">
+              <%= link_to "ホーム", Rails.application.routes.url_helpers.top_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "ログアウト", Rails.application.routes.url_helpers.destroy_employee_session_path, method: :delete, class: "nav-link" %>
+            </li>
+          <% else %>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pricing</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#">Disabled</a>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
   </header>
-   <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
 </html>

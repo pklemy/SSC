@@ -8,10 +8,14 @@
   </tr>
   <% @vendors.each do |vendor| %>
   <tr>
-      <td><%= link_to vendor.vendor_name, employees_vendor_path(vendor.id) %></td>
+      <td><%= link_to vendor.vendor_name, vendor_path(vendor) %></td>
       <td><%= vendor.url %></td>
       <td><%= vendor.phone %></td>
       <td><%= vendor.name %></td>
     </tr>
   <% end %>
 </table>
+
+<%= link_to "新規業者登録", new_store_vendor_path(@store), class: "btn btn-primary" %>
+
+<%= link_to "店舗詳細", store_path(@store), class: "btn btn-primary" %>

@@ -1,14 +1,12 @@
 <h1>homes top</h1>
 
-
-<% if employee_signed_in? %>
-<!--ボタンを作る記述-->
-<!--ログアウトボタン後から消すこと-->
-<li>
-<%= link_to "ログアウト",destroy_employee_session_path, method: :delete %>
-</li>
-<% else %>
-<li>
-<%= link_to "ログイン", new_employee_session_path %>
-</li>
+<% if current_employee && current_employee.stores.blank? %>
+  <%= link_to "店舗が設定されていません.店舗を登録してください.", new_store_path, class: "btn btn-primary" %>
+<% elsif current_employee %>
+  <h3>店舗一覧</h3>
+  <ul>
+    <% current_employee.stores.each do |store| %>
+      <li><%= link_to store.name, store_path(store) %></li>
+    <% end %>
+  </ul>
 <% end %>

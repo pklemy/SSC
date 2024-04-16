@@ -88,23 +88,26 @@ ActiveRecord::Schema.define(version: 2024_04_09_163926) do
 
   create_table "goods", force: :cascade do |t|
     t.integer "employee_id", null: false
-    t.integer "store_id", null: false
     t.integer "post_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["employee_id", "post_id"], name: "index_goods_on_employee_id_and_post_id", unique: true
     t.index ["employee_id"], name: "index_goods_on_employee_id"
     t.index ["post_id"], name: "index_goods_on_post_id"
-    t.index ["store_id"], name: "index_goods_on_store_id"
   end
 
   create_table "posts", force: :cascade do |t|
-    t.integer "employee_id"
+    t.integer "employee_id", null: false
+    t.integer "store_id", null: false
     t.string "title"
     t.string "body"
     t.integer "genre"
+    t.integer "vendor_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["employee_id"], name: "index_posts_on_employee_id"
+    t.index ["store_id"], name: "index_posts_on_store_id"
+    t.index ["vendor_id"], name: "index_posts_on_vendor_id"
   end
 
   create_table "stores", force: :cascade do |t|
@@ -112,6 +115,7 @@ ActiveRecord::Schema.define(version: 2024_04_09_163926) do
     t.string "name", null: false
     t.string "address", null: false
     t.string "phone", null: false
+    t.string "store_hash", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["employee_id"], name: "index_stores_on_employee_id"
@@ -136,8 +140,8 @@ ActiveRecord::Schema.define(version: 2024_04_09_163926) do
   add_foreign_key "employee_stores", "stores"
   add_foreign_key "goods", "employees"
   add_foreign_key "goods", "posts"
-  add_foreign_key "goods", "stores"
   add_foreign_key "posts", "employees"
+  add_foreign_key "posts", "stores"
   add_foreign_key "stores", "employees"
   add_foreign_key "vendors", "stores"
 end
