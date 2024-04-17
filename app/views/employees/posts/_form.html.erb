@@ -1,19 +1,27 @@
-<h3>genre</h3>
-<%= f.collection_select :genre, Post.genres_i18n.to_a, :first, :last, { include_blank: "--select--" }, { class: "form-control", id: "postGenre" } %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <h3>genre</h3>
+      <%= f.collection_select :genre, Post.genres_i18n.to_a, :first, :last, { include_blank: "--select--" }, { class: "form-control", id: "postGenre" } %>
+    </div>
+  </div>
 
-<div id="postVendor">
-  <h3>vendor</h3>
-  <%= f.collection_select :vendor_id, @store.vendors, :id, :name, { include_blank: "--select--" }, { class: "form-control" } %>
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-4">
+      <h5>タイトル</h5>
+      <%= f.text_field :title, class: "form-control mb-3" %>
+    </div>
+  </div>
+
+  <div class="row justify-content-center mt-3">
+    <div class="col-md-4">
+      <h3>本文</h3>
+      <%= f.text_area :body, class: "form-control mb-3" %>
+    </div>
+  </div>
 </div>
-
-<h3>タイトル</h3>
-<%= f.text_field :title %>
-
-<h3>本文</h3>
-<%= f.text_area :body %>
-
 <%= f.hidden_field :store_id, value: @store.id %>
-
+</table>
 <script>
   $('#postVendor').hide();
   $('#postGenre').on('change', (e) => {

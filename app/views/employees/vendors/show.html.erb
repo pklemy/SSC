@@ -1,16 +1,27 @@
 <h1>業者詳細</h1>
 
-<table>
-  <tr>
-    <th><%= @vendor.name %></th>
-    <th><%= @vendor.url %></th>
-    <th><%= @vendor.phone %></th>
-    <th><%= @vendor.name %></th>
-  </tr>
-  <%= link_to "編集", edit_vendor_path(@vendor.id) %>
+<table class="table table-bordered">
+  <tbody>
+    <tr>
+      <th><%= @vendor.name %></th>
+    </tr>
+    <tr>
+      <th><%= @vendor.url %></th>
+    </tr>
+    <tr>
+      <th><%= @vendor.phone %></th>
+    </tr>
+    <tr>
+      <th><%= @vendor.name %></th>
+    </tr>
+  </tbody>
+</table>
+
+  <div class="form-group d-flex justify-content-center">
+  <%= link_to "編集", edit_vendor_path(@vendor.id) class: "btn btn-secondary mr-2" %>
   <% if current_employee.stores.include?(@vendor.store) %>
     <%= link_to "削除", vendor_path(@vendor), method: :delete, "data-confirm" => "本当に削除しますか？" %>
   <% end %>
-</table>
+  
 
 <%= link_to "業者", store_vendors_path(@store), class: "btn btn-primary" %>

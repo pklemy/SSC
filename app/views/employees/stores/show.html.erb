@@ -1,6 +1,11 @@
-<h1>店舗詳細</h1>
-
-<table>
+<div class="row">
+  <div class="col-md-12 offset-md-0 col-sm-8 offset-sm-2">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title d-flex justify-content-center">
+          <h2>店舗詳細</h2>
+        </div>
+<table class= "table table-bordered">
   <tr>
     <th>店舗</th>
     <th>店舗住所</th>
@@ -13,24 +18,40 @@
   </tr>
 </table>
 
-<%= link_to "編集", Rails.application.routes.url_helpers.edit_store_path(@store), class: "btn btn-warning" %>
-
-<h3>従業員一覧</h3>
-<!-- TODO:一覧を作る -->
-
-<h3>従業員を招待する場合は,従業員のemailを下記フォームより送信してください</h3>
-<div class="row">
-  <div class="col-sm-4">
-    <%= form_with url: Rails.application.routes.url_helpers.invitation_store_path(@store) do |f| %>
-      <%= f.label :email %>
-      <%= f.email_field :email, class: "form-control mb-2" %>
-      <%= f.submit "invite", class: "btn btn-primary" %>
-    <% end %>
+<div class="container">
+  <div class="row justify-content-center">
+    <%= link_to "編集", Rails.application.routes.url_helpers.edit_store_path(@store), class: "border border-warning btn btn-secondary mb-4 ml-4" %>
+    <%= link_to "従業員一覧 リンクまだできてない", Rails.application.routes.url_helpers.edit_store_path(@store), class: "border border-warning btn btn-secondary mb-4 ml-4" %>
   </div>
 </div>
+<!-- TODO:一覧を作る -->
+<div class="row">
+  <div class="col-md-12 offset-md-0 col-sm-8 offset-sm-2">
+    <!--<div class="card">-->
+      <div class="card-body">
+        <div class="card-title d-flex justify-content-center">
+          <h4>従業員を招待する場合は、従業員のemailを下記フォームより送信してください</h4>
+        </div>
+        
+        <div class="row justify-content-center">
+          <div class="col-sm-5">
+            <%= form_with url: Rails.application.routes.url_helpers.invitation_store_path(@store) do |f| %>
+              <%= f.label :email %>
+              <div class="container">
+                <div class="row">
+                  <%= f.email_field :email, class: "form-control mb-2" %>
+                  <%= f.submit "invite", class: "form-control border border-warning btn btn-secondary mb-2" %>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
 
-<%= link_to "業者", store_vendors_path(@store), class: "btn btn-primary" %>
-
-<%= link_to "投稿", store_posts_path(@store), class: "btn btn-primary" %>
-
-  
+        <div class="row justify-content-center mt-3">
+          <%= link_to "業者", store_vendors_path(@store), class: "border border-warning btn btn-secondary mb-2" %>
+          <%= link_to "投稿", store_posts_path(@store), class: "border border-warning btn btn-secondary mb-2 ml-4" %>
+        </div>
+      </div>
+    <!--</div>-->
+  </div>
+</div>
