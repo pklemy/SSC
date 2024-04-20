@@ -1,57 +1,93 @@
-<div class="row">
-  <div class="col-md-12 offset-md-0 col-sm-8 offset-sm-2">
-    <div class="card">
-      <div class="card-body">
-        <div class="card-title d-flex justify-content-center">
-          <h2>店舗詳細</h2>
-        </div>
-<table class= "table table-bordered">
-  <tr>
-    <th>店舗</th>
-    <th>店舗住所</th>
-    <th>店舗電話番号</th>
-  </tr>
-  <tr>
-    <td><%= @store.name %></td>
-    <td><%= @store.address %></td>
-    <td><%= @store.phone %></td>
-  </tr>
-</table>
+<div class="card">
+  <div class="card-body">
+    <div class="card-title d-flex justify-content-center">
+      <h2>店舗詳細</h2>
+    </div>
+    
+    <table class= "table table-bordered">
+      <tr>
+        <th>店舗</th>
+        <td><%= @store.name %></td>
+      </tr>
+      <tr>
+        <th>店舗住所</th>
+        <td><%= @store.address %></td>
+      </tr>
+      <tr>
+        <th>店舗電話番号</th>
+        <td><%= @store.phone %></td>
+      </tr>
+      <tr>
+        <th>店舗登録者</th>
+        <td><%= @store.employee.name %></td>
+      </tr>
+      <tr>
+        <th>店舗登録者email</th>
+        <td><%= @store.employee.email %></td>
+      </tr>
+    </table>
 
-<div class="container">
-  <div class="row justify-content-center">
-    <%= link_to "編集", Rails.application.routes.url_helpers.edit_store_path(@store), class: "border border-warning btn btn-secondary mb-4 ml-4" %>
-    <%= link_to "従業員一覧 リンクまだできてない", Rails.application.routes.url_helpers.edit_store_path(@store), class: "border border-warning btn btn-secondary mb-4 ml-4" %>
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <% if current_employee == @store.employee %>
+          <%= link_to "編集", Rails.application.routes.url_helpers.edit_store_path(@store), class: "border border-warning btn btn-secondary mb-4 btn-block" %>
+        <% end %>
+      <%#= link_to "従業員一覧 リンクまだできてない", Rails.application.routes.url_helpers.edit_store_path(@store), class: "border border-warning btn btn-secondary mb-4 ml-4" %>
+      </div>
+    </div>
   </div>
 </div>
-<!-- TODO:一覧を作る -->
-<div class="row">
-  <div class="col-md-12 offset-md-0 col-sm-8 offset-sm-2">
-    <!--<div class="card">-->
-      <div class="card-body">
-        <div class="card-title d-flex justify-content-center">
-          <h4>従業員を招待する場合は、従業員のemailを下記フォームより送信してください</h4>
-        </div>
-        
-        <div class="row justify-content-center">
-          <div class="col-sm-5">
-            <%= form_with url: Rails.application.routes.url_helpers.invitation_store_path(@store) do |f| %>
-              <%= f.label :email %>
-              <div class="container">
-                <div class="row">
-                  <%= f.email_field :email, class: "form-control mb-2" %>
-                  <%= f.submit "invite", class: "form-control border border-warning btn btn-secondary mb-2" %>
-                </div>
-              </div>
-            <% end %>
-          </div>
-        </div>
 
-        <div class="row justify-content-center mt-3">
-          <%= link_to "業者", store_vendors_path(@store), class: "border border-warning btn btn-secondary mb-2" %>
-          <%= link_to "投稿", store_posts_path(@store), class: "border border-warning btn btn-secondary mb-2 ml-4" %>
+
+<div class="card mt-4">
+  <div class="card-body">
+    <% if current_employee.store_admin %>
+      <div class="card-title d-flex justify-content-center">
+        <h4>従業員を招待する場合は、従業員のemailを下記フォームより送信してください</h4>
+      </div>
+      <div class="row justify-content-center">
+        <div class="col-sm-5">
+          <%= form_with url: invitation_store_path(@store) do |f| %>
+            <%= f.label :email %>
+            <div class="container">
+              <div class="row">
+                <%= f.email_field :email, class: "form-control mb-2" %>
+                <%= f.submit "invite", class: "form-control border border-warning btn btn-secondary mb-2" %>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
-    <!--</div>-->
+    <% end %>
+    <div class="card-title d-flex justify-content-center">
+      <h4>登録済みの従業員一覧</h4>
+    </div>
+    <% if @store.staff_employees.any? %>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>名前</th>
+            <th>email</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @store.staff_employees.each do |employee| %>
+            <tr>
+              <td><%= employee.name %></td>
+              <td><%= employee.email %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    <% else %>
+      <div class="d-flex justify-content-center">
+        no-staff
+      </div>
+    <% end %>
   </div>
+</div>
+
+<div class="d-flex align-items-center flex-column mt-4">
+  <%= link_to "業者一覧", store_vendors_path(@store), class: "border border-warning btn btn-secondary mb-2" %>
+  <%= link_to "投稿一覧", store_posts_path(@store), class: "border border-warning btn btn-secondary mb-2" %>
 </div>

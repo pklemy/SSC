@@ -1,15 +1,15 @@
 class Employee < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+  devise :rememberable, :database_authenticatable, :registerable, :validatable
+         #:recoverable, 
   
   scope :owners, -> { includes(:stores).where.not('stores.employee_id': nil) }
   has_many :stores
   has_many :posts
   
   has_many :employee_stores
-  has_many :staff_stores, through: :employee_stores, source: :stores
+  has_many :staff_stores, through: :employee_stores, source: :store
   
   has_many :comments, dependent: :destroy
   
@@ -28,7 +28,7 @@ class Employee < ApplicationRecord
     self.good_posts.include?(post)
   end
   
-  def store
-    stores.first
-  end
+  # def store
+  #   stores.first
+  # end
 end

@@ -3,25 +3,30 @@
 <table class="table table-bordered">
   <tbody>
     <tr>
-      <th><%= @vendor.name %></th>
+      <th>業者名</th>
+      <td><%= @vendor.vendor_name %></td>
     </tr>
     <tr>
-      <th><%= @vendor.url %></th>
+      <th>発注先URL</th>
+      <td><%= @vendor.url %></td>
     </tr>
     <tr>
-      <th><%= @vendor.phone %></th>
+      <th>電話番号</th>
+      <td><%= @vendor.phone %></td>
     </tr>
     <tr>
-      <th><%= @vendor.name %></th>
+      <th>担当者名</th>
+      <td><%= @vendor.name %></td>
     </tr>
   </tbody>
 </table>
 
   <div class="form-group d-flex justify-content-center">
-  <%= link_to "編集", edit_vendor_path(@vendor.id) class: "btn btn-secondary mr-2" %>
+  <%= link_to "編集", edit_vendor_path(@vendor), class: "btn btn-secondary mr-2" %>
   <% if current_employee.stores.include?(@vendor.store) %>
     <%= link_to "削除", vendor_path(@vendor), method: :delete, "data-confirm" => "本当に削除しますか？" %>
   <% end %>
+  </div>
   
 
-<%= link_to "業者", store_vendors_path(@store), class: "btn btn-primary" %>
+<%= link_to "業者一覧に戻る", store_vendors_path(@store), class: "btn btn-primary" %>

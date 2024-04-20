@@ -1,30 +1,33 @@
-<div class="row">
-  <div class="col-md-12 offset-md-0 col-sm-8 offset-sm-2">
-    <div class="card">
-      <div class="card-body">
-        <div class="card-title d-flex justify-content-center">
-          <h2>業者一覧</h2>
-        </div>
-<table class= "table table-bordered">
-  <tr>
-    <th>業者名</th>
-    <th>発注先URL</th>
-    <th>電話番号</th>
-    <th>担当者名</th>
-  </tr>
-  <% @vendors.each do |vendor| %>
-    <tr>
-      <td><%= link_to vendor.vendor_name, vendor_path(vendor) %></td>
-      <td><%= vendor.url %></td>
-      <td><%= vendor.phone %></td>
-      <td><%= vendor.name %></td>
-    </tr>
-  <% end %>
-</table>
-
-<div class="container">
-  <div class="row justify-content-center mt-3">
-    <%= link_to "新規業者登録", new_store_vendor_path(@store), class: "border border-warning btn btn-secondary mb-4 mr-4 ml-4" %>
-    <%= link_to "店舗詳細", store_path(@store), class: "border border-warning btn btn-secondary mb-4 ml-4" %>
+<div class="card">
+  <div class="card-body">
+    <div class="card-title d-flex justify-content-center">
+      <h2>業者一覧</h2>
+    </div>
+    
+    <table class= "table table-bordered">
+      <tr>
+        <th>業者名</th>
+        <th>発注先URL</th>
+        <th>電話番号</th>
+        <th>担当者名</th>
+      </tr>
+      <% @vendors.each do |vendor| %>
+        <tr>
+          <td><%= link_to vendor.vendor_name, vendor_path(vendor) %></td>
+          <td><%= vendor.url %></td>
+          <td><%= vendor.phone %></td>
+          <td><%= vendor.name %></td>
+        </tr>
+      <% end %>
+    </table>
+    <div class="d-flex justify-content-center">
+      <% if current_employee == @store.employee %>
+        <%= link_to "新規業者登録", new_store_vendor_path(@store), class: "border border-warning btn btn-secondary" %>
+      <% end %>
+    </div>
   </div>
+</div>
+
+<div class="d-flex justify-content-center mt-3">
+  <%= link_to "店舗詳細", store_path(@store), class: "border border-warning btn btn-secondary mb-4" %>
 </div>

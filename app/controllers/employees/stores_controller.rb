@@ -1,6 +1,8 @@
 class Employees::StoresController < ApplicationController
-  before_action :store_admin_check
-  before_action :set_store, only: [:show, :edit, :update]
+  before_action :set_store, only: [:show, :edit, :update, :invitation]
+  before_action :correct_member, only: [:index, :show]
+  before_action :store_admin_check, only: [:new, :create, :edit, :update, :destroy, :invitation]
+  before_action :correct_admin, only: [:edit, :update, :destroy, :invitation]
   
   def new
     @store = Store.new
@@ -9,14 +11,16 @@ class Employees::StoresController < ApplicationController
   def create
     @store = current_employee.stores.build(store_params)
     if @store.save
+      flash[:notice] = "Success"
       redirect_to stores_path
     else
+      flash.now[:alert] = "Failed"
       render :new
     end
   end
 
   def index
-    @stores = current_employee.stores
+    @stores = (current_employee.stores + current_employee.staff_stores).uniq
   end
   
   def show
@@ -31,7 +35,6 @@ class Employees::StoresController < ApplicationController
   end
   
   def invitation
-    @store = Store.find(params[:id])
     EmployeeMailer.with(store_hash: @store.store_hash, email: params[:email]).welcome_mail.deliver_now
     redirect_to store_path(@store)
   end
@@ -52,8 +55,14 @@ class Employees::StoresController < ApplicationController
     end
   end
   
-  def correct_employee
-    unless current_employee == @store.employee
+  def correct_member
+    unless @store.all_members.include?(current_employee)
+      redirect_to root_url
+    end
+  end
+  
+  def correct_admin
+    unless @store.employee == current_employee
       redirect_to root_url
     end
   end

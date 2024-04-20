@@ -1,19 +1,10 @@
-
-<h2>店舗登録</h2>
-<%= form_with model: @store, url: stores_path do |f| %>
-<div class="field">
-  <%= f.label :店舗名 %><br>
-  <%= f.text_field :name %>
+<div class="row">
+  <div class="col-md-6">
+    <h2 class="my-4">店舗登録</h2>
+    <%= form_with model: @store do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      <%= render 'form', f: f %>
+      <%= f.submit '登録', class: "btn btn-primary btn-block mt-4" %>
+    <% end %>
+  </div>
 </div>
-  
-<div class="field">
-  <%= f.label :店舗住所 %><br>
-  <%= f.text_field :address %>
-  </div>
-  
-<div class="field">
-  <%= f.label :店舗電話番号 %><br>
-  <%= f.text_field :phone %>
-  </div>
-  <%= f.submit '登録' %>
-<% end %>

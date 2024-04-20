@@ -11,6 +11,10 @@ class Store < ApplicationRecord
   
   before_create :create_hash
   
+  def all_members
+    staff_employees.to_a.unshift(employee)
+  end
+  
   private
   
   def create_hash

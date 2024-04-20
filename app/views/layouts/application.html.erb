@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-   <title>SSC/Staff shearing community</title>
+   <title>SSC--Staff shearing community--</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -12,71 +12,49 @@
   </head>
 
   <body>
-    <!--<div class = "header-logo">-->
-    <!--SSC/Staff sharing community-->
-    <!--</div>-->
-    
     <header>
-      
-    <div class = "header-logo">
-    SSC/Staff sharing community
-    </div>
-    <ul class ="header-menu">
-    SSCについて
-    </ul>
-      
-    <div class = "main top-main">
-     <div class = "top-message">
-       
-    <% if employee_signed_in? %>
-       <% if current_employee.store_admin? %>
-       <% end %>
-
-       <li>
-        <%= link_to "ホーム", Rails.application.routes.url_helpers.top_path %>
-       </li>
-       <li>
-        <%= link_to "ログアウト", Rails.application.routes.url_helpers.destroy_employee_session_path, method: :delete %>
-       </li>
-      <% else %>
-       <li>
-        <%= link_to "会員登録", Rails.application.routes.url_helpers.new_employee_registration_path %>
-       </li>
-       <li>
-        <%= link_to "ログイン", Rails.application.routes.url_helpers.new_employee_session_path %>
-       </li>
-      
-    <% end %>
-     </div>
-    </div>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Navbar</a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <% if employee_signed_in? %>
-            <li class="nav-item active">
-              <%= link_to "ホーム", Rails.application.routes.url_helpers.top_path, class: "nav-link" %>
-            </li>
-            <li class="nav-item">
-              <%= link_to "ログアウト", Rails.application.routes.url_helpers.destroy_employee_session_path, method: :delete, class: "nav-link" %>
-            </li>
-          <% else %>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#">Disabled</a>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    </nav>
-  </header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <%= link_to "SSC", root_path, class: "navbar-brand" %>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <%= link_to "SSCについて", about_path, class: "nav-link" %>
+              </li>
+              <% if employee_signed_in? %>
+                <% if current_employee.store_admin? %>
+                <% end %>
+                <li class="nav-item">
+                  <%= link_to "ホーム", top_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログアウト", destroy_employee_session_path, method: :delete, class: "nav-link" %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+                  <%= link_to "会員登録", new_employee_registration_path, class: "nav-link" %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to "ログイン", new_employee_session_path, class: "nav-link" %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
     <div class="container">
+      <%= render 'layouts/flash_messages' %>
       <%= yield %>
+      <% if Rails.env.development? %>
+        <div>
+        <%= debug params %>
+        employee: <%= current_employee.inspect %>
+        </div>
+      <% end %>
     </div>
   </body>
 </html>

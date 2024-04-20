@@ -9,9 +9,9 @@
 Admin.create!(email: "admin@test.com", password: "password")
 
 owner_employees_attributes = [
-    { name: "owner_1", email: "owner_1@test.com", password: "password" },
-    { name: "owner_2", email: "owner_2@test.com", password: "password" },
-    { name: "owner_3", email: "owner_3@test.com", password: "password" },
+    { name: "owner_1", email: "owner_1@test.com", password: "password", store_admin: true },
+    { name: "owner_2", email: "owner_2@test.com", password: "password", store_admin: true },
+    { name: "owner_3", email: "owner_3@test.com", password: "password", store_admin: true },
   ]
 
 stores_attributes = [
@@ -25,16 +25,16 @@ stores_attributes = [
       # t.string :name, null:false
 store_vendors_attributes = [
     [
-      { name: "vendor_A", url: "https://test.testA.com", phone_number: "111-111-1111" },
-      { name: "vendor_B", url: "https://test.testB.com", phone_number: "111-111-1111" },
-      { name: "vendor_C", url: "https://test.testC.com", phone_number: "111-111-1111" }
+      { vendor_name: "vendor_A", url: "https://test.testA.com", phone: "111-111-1111", name: "yamada" },
+      { vendor_name: "vendor_B", url: "https://test.testB.com", phone: "111-111-1111", name: "suzuki" },
+      { vendor_name: "vendor_C", url: "https://test.testC.com", phone: "111-111-1111", name: "satou" }
     ],
     [
-      { name: "vendor_D", url: "https://test.testD.com", phone_number: "111-111-1111" },
-      { name: "vendor_E", url: "https://test.testE.com", phone_number: "111-111-1111" }
+      { vendor_name: "vendor_D", url: "https://test.testD.com", phone: "111-111-1111", name: "tanaka" },
+      { vendor_name: "vendor_E", url: "https://test.testE.com", phone: "111-111-1111", name: "sugimoto" }
     ],
     [
-      { name: "vendor_F", url: "https://test.testF.com", phone_number: "111-111-1111" }
+      { vendor_name: "vendor_F", url: "https://test.testF.com", phone: "111-111-1111", name: "kimura" }
     ],
   ]
   

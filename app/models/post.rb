@@ -13,7 +13,7 @@ class Post < ApplicationRecord
   
   enum genre: { shift: 0, vendor: 1, lost_item: 2 }
   
-  before_save :vendor_check
+  before_validation :vendor_check
   
   def good_by?(employee)
     good.exists?(employee_id: employee.id)
@@ -24,6 +24,10 @@ class Post < ApplicationRecord
   def vendor_check
     if self.genre != "vendor"
       self.vendor = nil
+    else
+      if !self.vendor.present?
+        errors.add(:vendor, "を選択してください.")
+      end
     end
   end
 end

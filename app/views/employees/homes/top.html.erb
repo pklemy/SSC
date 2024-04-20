@@ -1,12 +1,29 @@
-<h1>homes top</h1>
-
-<% if current_employee && current_employee.stores.blank? %>
-  <%= link_to "店舗が設定されていません.店舗を登録してください.", new_store_path, class: "btn btn-primary" %>
+<% if current_employee&.store_admin?  && current_employee.stores.blank? %>
+  <h1>homes top</h1>
+  
+  <div class="d-flex justify-content-center mt-4">
+    <%= link_to "店舗が設定されていません.店舗を登録してください.", new_store_path, class: "btn btn-primary" %>
+  </div>
 <% elsif current_employee %>
+  <h1>homes top</h1>
+  
   <h3>店舗一覧</h3>
   <ul>
-    <% current_employee.stores.each do |store| %>
+    <% (current_employee.stores + current_employee.staff_stores).uniq.each do |store| %>
       <li><%= link_to store.name, store_path(store) %></li>
     <% end %>
   </ul>
+<% else %>
+  <div class="jumbotron mt-4">
+    <div class="container">
+      <h1 class="d-flex justify-content-center mb-5">SSC</h1>
+      <h3 class="d-flex justify-content-center mb-5">重要な内容が共有ができていなかったりしてませんか？</h3>
+      <div class="d-flex justify-content-center">
+        <%= link_to "ログイン", new_employee_session_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+  <style>
+    
+  </style>
 <% end %>

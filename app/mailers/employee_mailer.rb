@@ -1,6 +1,7 @@
-include Rails.application.routes.url_helpers
+
 
 class EmployeeMailer < ApplicationMailer
+  include Rails.application.routes.url_helpers
   default from: "info@ssc.com"
   
   def welcome_mail

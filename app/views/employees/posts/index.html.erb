@@ -1,3 +1,9 @@
+<%= form_with url: store_posts_path(@store), method: :get do |f| %>
+  <%= f.search_field :keyword, value: params[:keyword], placeholder: "Keyword検索" %>
+  <%= f.collection_select :genre, Post.genres_i18n, :first, :last, { include_blank: "--選んで検索--", selected: params[:genre] }, {} %>
+  <%= f.submit "検索する" %>
+<% end %>
+
 <div class="row">
   <div class="col-md-12 offset-md-0 col-sm-8 offset-sm-2">
     <div class="card">
@@ -8,12 +14,20 @@
         </div>
 <table class= "table table-bordered">
   <tr>
+    <th>ジャンル</th>
+    <th>業者名</th>
     <th>name</th>
     <th>タイトル</th>
     <th>内容</th>
   </tr>
   <% @posts.each do |post| %>
   <tr>
+    <td><%= post.genre_i18n %></td>
+    <td>
+      <% if post.vendor.present? %>
+        <%= link_to post.vendor.vendor_name, vendor_path(post.vendor) %>
+      <% end %>
+    </td>
     <td><%= post.employee.name %></td>
     <td><%= link_to post.title, post_path(post.id) %></td>
     <td><%= post.body %></td>

@@ -4,6 +4,7 @@ class Employees::EmployeesController < ApplicationController
   end
   
   def staff_new
+    sign_out current_employee
     @store = Store.find_by(store_hash: params[:store_hash])
     @employee = Employee.new
   end
