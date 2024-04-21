@@ -9,10 +9,10 @@
 <% elsif current_employee %>
 <div class="jumbotron mt-4">
   <div class="container">
-    <h1 class="d-flex justify-content-center mb-5">店舗一覧</h1>
+    <h1 class="d-flex justify-content-center mb-5">--- 店舗一覧 ---</h1>
     <div class="card">
-      <div class="card-body content-center mb-5">
-        <table>
+      <div class="card-body content-center">
+        <table class="d-flex justify-content-center mb-5 mt-5">
           <tr>
           <th><h5>あなたの所属店舗はこちら　☞</h5></th>
           <% (current_employee.stores + current_employee.staff_stores).uniq.each do |store| %>
