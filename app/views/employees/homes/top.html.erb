@@ -1,42 +1,35 @@
 <% if current_employee&.store_admin?  && current_employee.stores.blank? %>
-<div class="jumbotron mt-4">
-  <div class="container">
+  <div class="jumbotron mt-5">
     <h3 class="d-flex justify-content-center mb-5">店舗責任者の方はこちらのボタンへ☟</h3>
     <div class="card">
-  <div class="d-flex justify-content-center mt-4">
-    <%= link_to "店舗が設定されていません.店舗を登録してください.", new_store_path, class: "btn btn-primary" %>
+      <div class="d-flex justify-content-center mt-4">
+        <%= link_to "店舗が設定されていません.店舗を登録してください.", new_store_path, class: "btn btn-primary" %>
+      </div>
+    </div>
   </div>
 <% elsif current_employee %>
-<div class="jumbotron mt-4">
-  <div class="container">
+  <div class="jumbotron mt-5">
     <h1 class="d-flex justify-content-center mb-5">--- 店舗一覧 ---</h1>
     <div class="card">
       <div class="card-body content-center">
         <table class="d-flex justify-content-center mb-5 mt-5">
           <tr>
-          <th><h5>あなたの所属店舗はこちら　☞</h5></th>
-          <% (current_employee.stores + current_employee.staff_stores).uniq.each do |store| %>
-          <th><h5><%= link_to store.name, store_path(store), class: "mb-4 ml-4" %></h5></th>
-          <% end %>
+            <th><h5>あなたの所属店舗はこちら　☞</h5></th>
+            <% (current_employee.stores + current_employee.staff_stores).uniq.each do |store| %>
+              <th><h5><%= link_to store.name, store_path(store), class: "mb-4 ml-4" %></h5></th>
+            <% end %>
           </tr>
         </table>
-          <% else %>
-          <div class="jumbotron mt-4">
-            <div class="container">
-              <h1 class="d-flex justify-content-center mb-5">!!　Welcome to --SSC--　!!</h1>
-              <h5 class="d-flex justify-content-center mb-5">飲食店専用連絡コミュニティーを使って情報共有や閲覧確認ができるようになっております♪</h5>
-              
-               
-              <div class="d-flex justify-content-center">
-                <%= link_to "ログイン", new_employee_session_path, class: "btn btn-primary" %>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
+    </div>
   </div>
-</div>
-  <style>
-    
-  </style>
+<% else %>
+  <div class="jumbotron mt-5">
+    <h1 class="d-flex justify-content-center mb-5">!!　Welcome to --SSC--　!!</h1>
+    <h5 class="d-flex justify-content-center mb-5">飲食店専用連絡コミュニティーを使って情報共有や閲覧確認ができるようになっております♪</h5>
+      <div class="d-flex justify-content-center">
+        <%= link_to "ログイン", new_employee_session_path, class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
 <% end %>

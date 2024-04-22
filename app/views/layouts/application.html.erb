@@ -22,27 +22,33 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-              <li class="nav-item">
-                <i class="fa-solid fa-pen-nib"></i>
+              <li class="nav-item d-flex">
+                <i class="fa-solid fa-pen-nib nav-link pr-0"></i>
                 <%= link_to "SSCについて", about_path, class: "nav-link" %>
               </li>
               <% if employee_signed_in? %>
                 <% if current_employee.store_admin? %>
                 <% end %>
-                <li class="nav-item">
-                  <i class="fa-solid fa-house"></i>
+                <li class="nav-item d-flex">
+                  <i class="fa-solid fa-house nav-link pr-0"></i>
                   <%= link_to "ホーム", top_path, class: "nav-link" %>
                 </li>
-                <li class="nav-item">
-                  <i class="fa-solid fa-hands"></i>
+                <li class="nav-item d-flex">
+                  <i class="fa-solid fa-hands nav-link pr-0"></i>
                   <%= link_to "ログアウト", destroy_employee_session_path, method: :delete, class: "nav-link" %>
                 </li>
+              <% elsif admin_signed_in? %>
+                <li class="nav-item d-flex ">
+                  <i class="fa-solid fa-hands nav-link pr-0"></i>
+                  <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: "nav-link" %>
+                </li>
               <% else %>
-                <li class="nav-item">
-                  <i class="fa-solid fa-address-card"></i>
+                <li class="nav-item d-flex">
+                  <i class="fa-solid fa-address-card nav-link pr-0"></i>
                   <%= link_to "会員登録", new_employee_registration_path, class: "nav-link" %>
                 </li>
-                <i class="fa-solid fa-right-to-bracket"></i>
+                <li class="nav-item d-flex">
+                  <i class="fa-solid fa-right-to-bracket nav-link pr-0"></i>
                   <%= link_to "ログイン", new_employee_session_path, class: "nav-link" %>
                 </li>
               <% end %>
@@ -54,10 +60,12 @@
     <div class="container">
       <%= render 'layouts/flash_messages' %>
       <%= yield %>
-      <% if Rails.env.development? %>
+      <%# if Rails.env.development? %>
+      <% if false %>
         <div>
         <%= debug params %>
-        employee: <%= current_employee.inspect %>
+        employee: <%= current_employee.inspect %><br>
+        admin: <%= current_admin.inspect %>
         </div>
       <% end %>
     </div>

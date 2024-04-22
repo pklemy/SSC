@@ -1,6 +1,7 @@
 class Employees::StoresController < ApplicationController
+  before_action :authenticate_employee!
   before_action :set_store, only: [:show, :edit, :update, :invitation]
-  before_action :correct_member, only: [:index, :show]
+  before_action :correct_member, only: [:show]
   before_action :store_admin_check, only: [:new, :create, :edit, :update, :destroy, :invitation]
   before_action :correct_admin, only: [:edit, :update, :destroy, :invitation]
   
@@ -11,10 +12,10 @@ class Employees::StoresController < ApplicationController
   def create
     @store = current_employee.stores.build(store_params)
     if @store.save
-      flash[:notice] = "Success"
+      flash[:notice] = "登録できました"
       redirect_to stores_path
     else
-      flash.now[:alert] = "Failed"
+      flash.now[:alert] = "登録に失敗しました"
       render :new
     end
   end
@@ -30,8 +31,13 @@ class Employees::StoresController < ApplicationController
   end
   
   def update
-    @store.update(store_params)
-    redirect_to stores_path
+    if @store.update(store_params)
+      flash[:notice] = "変更できました"
+      redirect_to stores_path
+    else
+      flash.now[:alert] = "変更に失敗しました"
+      render :edit
+    end
   end
   
   def invitation

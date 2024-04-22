@@ -1,11 +1,20 @@
 <h1>admin homes Top</h1>
 
-<% if admin_signed_in? %>
-ログイン中
-<% else %>
-ログアウト中
-<% end %>
-
-<!--ボタンを作る記述-->
-<%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
-<%= link_to "ログイン", admin_session_path %>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>管理車名</th>
+      <th>email</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @employees.each do |employee| %>
+      <tr>
+        <td><%= employee.name %></td>
+        <td><%= employee.email %></td>
+        <td><%= link_to "削除", admins_employee_path(employee), method: :delete, class: "btn btn-danger", data: { confirm: "削除しますか? "} %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

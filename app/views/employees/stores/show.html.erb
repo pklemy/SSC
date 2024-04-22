@@ -68,6 +68,9 @@
           <tr>
             <th>名前</th>
             <th>email</th>
+            <% if current_employee.store_admin? %>
+              <th></th>
+            <% end %>
           </tr>
         </thead>
         <tbody>
@@ -75,6 +78,9 @@
             <tr>
               <td><%= employee.name %></td>
               <td><%= employee.email %></td>
+              <% if current_employee.store_admin? %>
+                <td><%= link_to "削除", store_employee_path(@store, employee), method: :delete, class: "btn btn-danger", data: { confirm: "削除しますか? "} %></td>
+              <% end %>
             </tr>
           <% end %>
         </tbody>
@@ -87,7 +93,7 @@
   </div>
 </div>
 
-<div class="d-flex align-items-center flex-column mt-4">
-  <%= link_to "業者一覧", store_vendors_path(@store), class: "border border-warning btn btn-secondary mb-2" %>
-  <%= link_to "投稿一覧", store_posts_path(@store), class: "border border-warning btn btn-secondary mb-2" %>
+<div class="d-flex justify-content-center mt-5">
+  <%= link_to "業者一覧", store_vendors_path(@store), class: "border border-warning btn btn-secondary mr-2" %>
+  <%= link_to "投稿一覧", store_posts_path(@store), class: "border border-warning btn btn-secondary" %>
 </div>

@@ -5,11 +5,15 @@ class Employee < ApplicationRecord
          #:recoverable, 
   
   scope :owners, -> { includes(:stores).where.not('stores.employee_id': nil) }
-  has_many :stores
+  
+  validates :name, presence: true, length: { maximum: 50 }
+  validates :phone_number, presence: true
+  
+  has_many :stores, dependent: :destroy
   has_many :posts
   
   has_many :employee_stores
-  has_many :staff_stores, through: :employee_stores, source: :store
+  has_many :staff_stores, through: :employee_stores, source: :store, dependent: :destroy
   
   has_many :comments, dependent: :destroy
   

@@ -1,4 +1,12 @@
 ja:
+  activerecord:
+    attributes:
+      employee:
+        name: 氏名
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード確認
+        phone_number: 電話番号
   enums:
     post:
       genre:

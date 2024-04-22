@@ -12,34 +12,43 @@
          <!--完成前に連絡一覧の名前に変更すること-->
           <h2>投稿一覧</h2>
         </div>
-<table class= "table table-bordered">
-  <tr>
-    <th>ジャンル</th>
-    <th>業者名</th>
-    <th>name</th>
-    <th>タイトル</th>
-    <th>内容</th>
-  </tr>
-  <% @posts.each do |post| %>
-  <tr>
-    <td><%= post.genre_i18n %></td>
-    <td>
-      <% if post.vendor.present? %>
-        <%= link_to post.vendor.vendor_name, vendor_path(post.vendor) %>
-      <% end %>
-    </td>
-    <td><%= post.employee.name %></td>
-    <td><%= link_to post.title, post_path(post.id) %></td>
-    <td><%= post.body %></td>
-    <td><%= link_to "#{post.comments.count} コメント", post_path(post) %></td>
-  </tr>
-  <% end %>
-</table>
-<div class="container">
-  <div class="row justify-content-center">
-    <%= link_to "新規投稿", new_store_post_path(@store), class: "border border-warning btn btn-secondary mb-4 ml-4" %>
-    <%= link_to "店舗詳細", store_path(@store), class: "border border-warning btn btn-secondary mb-4 ml-4" %>
+        <table class= "table table-bordered">
+          <tr>
+            <th>ジャンル</th>
+            <th>業者名</th>
+            <th>name</th>
+            <th>タイトル</th>
+            <th>内容</th>
+            <% if current_employee.store_admin? %>
+              <th></th>
+            <% end %>
+          </tr>
+          <% @posts.each do |post| %>
+          <tr>
+            <td><%= post.genre_i18n %></td>
+            <td>
+              <% if post.vendor.present? %>
+                <%= link_to post.vendor.vendor_name, vendor_path(post.vendor) %>
+              <% end %>
+            </td>
+            <td><%= post.employee.name %></td>
+            <td><%= link_to post.title, post_path(post.id) %></td>
+            <td><%= post.body %></td>
+            <td><%= link_to "#{post.comments.count} コメント", post_path(post) %></td>
+            <% if current_employee.store_admin? %>
+              <td><%= link_to "削除", post_path(post), method: :delete, class: "btn btn-danger", data: { confirm: "削除しますか" } %></td>
+            <% end %>
+          </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
   </div>
+</div>
+
+<div class="d-flex justify-content-center mt-5">
+  <%= link_to "新規投稿", new_store_post_path(@store), class: "border border-warning btn btn-secondary mb-4 ml-4" %>
+  <%= link_to "店舗詳細", store_path(@store), class: "border border-warning btn btn-secondary mb-4 ml-4" %>
 </div>
 <!--<%#= link_to 'posts', employees_posts_path %>-->
 <!--<%#= link_to 'piyopiyoアクセス', piyopiyo_path %>-->

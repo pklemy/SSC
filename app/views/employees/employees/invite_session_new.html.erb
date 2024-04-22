@@ -3,14 +3,14 @@
     <div class="card mt-4">
       <div class="card-body">
         <div class="card-title d-flex justify-content-center">
-          <h2>Admin Log in</h2>
+          <h2>Log in</h2>
         </div>
-        <%= form_with(model: @admin, url: admin_session_path) do |f| %>
+        <%= form_with(model: @employee, url: invite_sessions_path(@store), method: :post) do |f| %>
           <%= render "layouts/error_messages", model: f.object %>
           
           <div class="form-group">
             <%= f.label :email, "メールアドレス", class: "form-label" %>
-            <%= f.email_field :email, class: "form-control" %>
+            <%= f.email_field :email, class: "form-control", readonly: true %>
           </div>
         
           <div class="form-group">
@@ -22,7 +22,6 @@
             <%= f.submit "Log in", class: "btn btn-primary px-5" %>
           </div>
         <% end %>
-        <%= render "admins/shared/links" %>
       </div>
     </div>
   </div>
