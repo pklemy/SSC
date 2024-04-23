@@ -9,9 +9,9 @@
 Admin.create!(email: "admin@test.com", password: "password")
 
 owner_employees_attributes = [
-    { name: "owner_1", email: "owner_1@test.com", password: "password", store_admin: true },
-    { name: "owner_2", email: "owner_2@test.com", password: "password", store_admin: true },
-    { name: "owner_3", email: "owner_3@test.com", password: "password", store_admin: true },
+    { name: "owner_1", email: "owner_1@test.com", password: "password", store_admin: true, phone_number: "000-000-0000" },
+    { name: "owner_2", email: "owner_2@test.com", password: "password", store_admin: true, phone_number: "000-000-0000" },
+    { name: "owner_3", email: "owner_3@test.com", password: "password", store_admin: true, phone_number: "000-000-0000" },
   ]
 
 stores_attributes = [
@@ -40,16 +40,16 @@ store_vendors_attributes = [
   
 staff_employees_attributes = [
   [
-    { name: "staff_1", email: "staff_1@test.com", password: "password" },
-    { name: "staff_2", email: "staff_2@test.com", password: "password" },
-    { name: "staff_3", email: "staff_3@test.com", password: "password" }
+    { name: "staff_1", email: "staff_1@test.com", password: "password", phone_number: "000-000-0000" },
+    { name: "staff_2", email: "staff_2@test.com", password: "password", phone_number: "000-000-0000" },
+    { name: "staff_3", email: "staff_3@test.com", password: "password", phone_number: "000-000-0000" }
   ],
   [
-    { name: "staff_4", email: "staff_4@test.com", password: "password" },
-    { name: "staff_5", email: "staff_5@test.com", password: "password" }
+    { name: "staff_4", email: "staff_4@test.com", password: "password", phone_number: "000-000-0000" },
+    { name: "staff_5", email: "staff_5@test.com", password: "password", phone_number: "000-000-0000" }
   ],
   [
-    { name: "staff_6", email: "staff_6@test.com", password: "password" }
+    { name: "staff_6", email: "staff_6@test.com", password: "password", phone_number: "000-000-0000" }
   ],
 ]
   
