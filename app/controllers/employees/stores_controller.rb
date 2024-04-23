@@ -13,7 +13,7 @@ class Employees::StoresController < ApplicationController
     @store = current_employee.stores.build(store_params)
     if @store.save
       flash[:notice] = "登録できました"
-      redirect_to stores_path
+      redirect_to root_path
     else
       flash.now[:alert] = "登録に失敗しました"
       render :new

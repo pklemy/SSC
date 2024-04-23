@@ -45,16 +45,18 @@
       <div class="card-title d-flex justify-content-center">
         <h4>従業員を招待する場合は、従業員のemailを下記フォームより送信してください ☟</h4>
       </div>
+      <div class="row">
+        <div class="col-sm-6 offset-sm-3 alert alert-warning">
+          <p>架空のアプリの為emailは実際に送信されません.</p>
+          <p>招待後の内容は<%= link_to "こちら", "/letter_opener" %>から確認できます</p>
+        </div>
+      </div>
       <div class="row justify-content-center">
         <div class="col-sm-5">
           <%= form_with url: invitation_store_path(@store) do |f| %>
             <%= f.label :email %>
-            <div class="container">
-              <div class="row">
-                <%= f.email_field :email, class: "form-control mb-2" %>
-                <%= f.submit "invite", class: "form-control border border-warning btn btn-secondary mb-2" %>
-              </div>
-            </div>
+            <%= f.email_field :email, class: "form-control mb-2" %>
+            <%= f.submit "invite", class: "form-control border border-warning btn btn-secondary mb-2" %>
           <% end %>
         </div>
       </div>

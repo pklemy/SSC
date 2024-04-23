@@ -64,6 +64,16 @@ class Employees::EmployeesController < ApplicationController
     redirect_to store_path(@store)
   end
   
+  def guest_login
+    @employee = Employee.find_or_initialize_by(email: "owner_1@test.com")
+    if @employee.new_record?
+      @employee.assign_attributes(id: 1, name: "ownew", password: "password", store_admin: true, phone_number: "000-000-0000")
+      @employee.save!
+    end
+    sign_in @employee
+    redirect_to root_url
+  end
+  
   private
   
   def employee_params

@@ -34,6 +34,7 @@ Rails.application.routes.draw do
     post "employees/invite_session_create/:store_id", to: "employees#invite_session_create", as: :invite_sessions
     get "employees/staff_new/:store_hash", to: "employees#staff_new", as: :new_staff
     post "employees/staff_create/:store_id", to: "employees#staff_create", as: :create_staff
+    post "employees/guest_login", to: "employees#guest_login", as: :guest_employee_session
     resources :employees, only: [:show, :edit, :update]
   end
   

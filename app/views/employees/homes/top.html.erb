@@ -12,14 +12,8 @@
     <h1 class="d-flex justify-content-center mb-5">--- 店舗一覧 ---</h1>
     <div class="card">
       <div class="card-body content-center">
-        <table class="d-flex justify-content-center mb-5 mt-5">
-          <tr>
-            <th><h5>あなたの所属店舗はこちら　☞</h5></th>
-            <% (current_employee.stores + current_employee.staff_stores).uniq.each do |store| %>
-              <th><h5><%= link_to store.name, store_path(store), class: "mb-4 ml-4" %></h5></th>
-            <% end %>
-          </tr>
-        </table>
+        <h5>あなたの所属店舗はこちら　☞</h5>
+        <%= render "employees/stores/index", stores: @stores %>
       </div>
     </div>
   </div>
@@ -29,6 +23,9 @@
     <h5 class="d-flex justify-content-center mb-5">飲食店専用連絡コミュニティーを使って情報共有や閲覧確認ができるようになっております♪</h5>
       <div class="d-flex justify-content-center">
         <%= link_to "ログイン", new_employee_session_path, class: "btn btn-primary" %>
+      </div>
+      <div class="d-flex justify-content-center mt-4">
+        <%= link_to "ゲストログイン", guest_employee_session_path, class: "btn btn-secondary", method: :post %>
       </div>
     </div>
   </div>
