@@ -1,10 +1,26 @@
-<h1>--- 店舗一覧 ---</h1>
-<table>
-  <tr><th>店舗</th><th>店舗住所</th><th>店舗電話番号</th></tr>
-  <% @stores.each do |store| %>
-  <tr>
-      <td><%= store.name %></td><td><%= link_to store.address, store_path(store.id) %></td><td><%= store.phone %></td>
-    </tr>
-  <% end %>
-</table>
-
+<div class="row">
+  <div class="col-md-12 offset-md-0 col-sm-8 offset-sm-2">
+    <div class="card">
+      <div class="card-body">
+        <div class="card-title d-flex justify-content-center">
+         <!--完成前に連絡一覧の名前に変更すること-->
+          <h2>--- 店舗一覧 ---</h2>
+        </div>
+        <table class= "table table-bordered">
+          <tr>
+            <th>店舗</th>
+            <th>店舗住所</th>
+            <th>店舗電話番号</th>
+          </tr>
+          <% @stores.each do |store| %>
+           <tr>
+            <td><%= store.name %></td>
+            <td><%= link_to store.address, store_path(store.id) %></td>
+            <td><%= store.phone %></td>
+           </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
