@@ -52,7 +52,7 @@ class Employees::PostsController < ApplicationController
     @post =Post.find_by_id(params[:id])
     @post.destroy if @post #データを削除
     flash[:notice] = "削除されました."
-    redirect_back(fallback_location: root_url) #post indexページへ
+    redirect_to store_posts_path(@post.store) #post indexページへ
   end
   
    private

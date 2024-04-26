@@ -7,6 +7,7 @@ class Employees::CommentsController < ApplicationController
       flash[:notice] = "登録できました"
       redirect_to post_path(@post)
     else
+      @store = @post.store
       flash.now[:alert] = "登録に失敗しました"
       render "employees/posts/show"
     end
