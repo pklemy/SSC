@@ -15,9 +15,9 @@ owner_employees_attributes = [
   ]
 
 stores_attributes = [
-    { name: "store_1", address: "store_1_city", phone: "000-000-0000" },
-    { name: "store_2", address: "store_2_city", phone: "000-000-0000" },
-    { name: "store_3", address: "store_3_city", phone: "000-000-0000" }
+    { name: "イタリアン名古屋", address: "i_nagoya@test.city", phone: "000-000-0000" },
+    { name: "居酒屋みやこ", address: "miyako@test.city", phone: "000-000-0000" },
+    { name: "スナック煌", address: "kirameki@test.city", phone: "000-000-0000" }
   ]
 
       # t.string :url, null:false
@@ -25,31 +25,31 @@ stores_attributes = [
       # t.string :name, null:false
 store_vendors_attributes = [
     [
-      { vendor_name: "vendor_A", url: "https://test.testA.com", phone: "111-111-1111", name: "yamada" },
-      { vendor_name: "vendor_B", url: "https://test.testB.com", phone: "111-111-1111", name: "suzuki" },
-      { vendor_name: "vendor_C", url: "https://test.testC.com", phone: "111-111-1111", name: "satou" }
+      { vendor_name: "ミート大国", url: "https://test.meat.com", phone: "111-111-1111", name: "yamada" },
+      { vendor_name: "魚王国", url: "https://test.fish.com", phone: "111-111-1111", name: "suzuki" },
+      { vendor_name: "野菜農園", url: "https://test.vegetable.com", phone: "111-111-1111", name: "satou" }
     ],
     [
-      { vendor_name: "vendor_D", url: "https://test.testD.com", phone: "111-111-1111", name: "tanaka" },
-      { vendor_name: "vendor_E", url: "https://test.testE.com", phone: "111-111-1111", name: "sugimoto" }
+      { vendor_name: "ドリンク都", url: "https://test.drink.com", phone: "111-111-1111", name: "tanaka" },
+      { vendor_name: "オール食材", url: "https://test.all.com", phone: "111-111-1111", name: "sugimoto" }
     ],
     [
-      { vendor_name: "vendor_F", url: "https://test.testF.com", phone: "111-111-1111", name: "kimura" }
+      { vendor_name: "何でも屋", url: "https://test.anything.com", phone: "111-111-1111", name: "kimura" }
     ],
   ]
   
 staff_employees_attributes = [
   [
-    { name: "staff_1", email: "staff_1@test.com", password: "password", phone_number: "000-000-0000" },
-    { name: "staff_2", email: "staff_2@test.com", password: "password", phone_number: "000-000-0000" },
-    { name: "staff_3", email: "staff_3@test.com", password: "password", phone_number: "000-000-0000" }
+    { name: "亀田光輝", email: "kameda@test.com", password: "password", phone_number: "000-000-0000" },
+    { name: "目黒加奈", email: "meguro@test.com", password: "password", phone_number: "000-000-0000" },
+    { name: "山田莉子", email: "yamada@test.com", password: "password", phone_number: "000-000-0000" }
   ],
   [
-    { name: "staff_4", email: "staff_4@test.com", password: "password", phone_number: "000-000-0000" },
-    { name: "staff_5", email: "staff_5@test.com", password: "password", phone_number: "000-000-0000" }
+    { name: "佐藤美紀", email: "saitou@test.com", password: "password", phone_number: "000-000-0000" },
+    { name: "川口大輝", email: "kawaguti@test.com", password: "password", phone_number: "000-000-0000" }
   ],
   [
-    { name: "staff_6", email: "staff_6@test.com", password: "password", phone_number: "000-000-0000" }
+    { name: "後藤正樹", email: "gotou@test.com", password: "password", phone_number: "000-000-0000" }
   ],
 ]
   

@@ -11,8 +11,10 @@ class Employees::VendorsController < ApplicationController
     @vendor = Vendor.new(vendor_params)
     correct_owner
     if @vendor.save
+      flash[:notice] = "登録に成功しました."
       redirect_to store_vendors_path(@store)
     else
+      flash[:alert] = "登録できませんでした."
       render :new
     end
   end
@@ -40,8 +42,10 @@ class Employees::VendorsController < ApplicationController
     @store = @vendor.store
     correct_staff
     if @vendor.update(vendor_params)
+      flash[:notice] = "変更しました."
       redirect_to store_vendors_path(@store)
     else
+      flash[:alert] = "失敗しました."
       render :edit
     end
   end
@@ -51,6 +55,7 @@ class Employees::VendorsController < ApplicationController
     @store = @vendor.store
     correct_owner
     @vendor.destroy if @vendor
+    flash[:notice] = "削除されました."
     redirect_to store_vendors_path(@store)
   end
   
