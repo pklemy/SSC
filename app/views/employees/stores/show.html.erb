@@ -62,7 +62,7 @@
       </div>
     <% end %>
     <div class="card-title d-flex justify-content-center">
-      <h4>登録済みの従業員一覧</h4>
+      <h4>登録済みの従業員一覧 ☟</h4>
     </div>
     <% if @store.staff_employees.any? %>
       <table class="table table-bordered">
@@ -95,7 +95,11 @@
   </div>
 </div>
 
-<div class="d-flex justify-content-center mt-5">
-  <%= link_to "業者一覧", store_vendors_path(@store), class: "border border-warning btn btn-secondary mr-2" %>
-  <%= link_to "投稿一覧", store_posts_path(@store), class: "border border-warning btn btn-secondary" %>
+<div class="d-flex justify-content-center mt-3">
+  <h4>登録済みのスタッフは下記ボタンから業者の情報が確認できたり、投稿ができます！</h4>
+</div>
+
+<div class="d-flex justify-content-center mt-3">
+  <%= link_to "業者一覧", store_vendors_path(@store), class: "border border-warning btn btn-primary mr-2" %>
+  <%= link_to "投稿一覧", store_posts_path(@store), class: "border border-warning btn btn-success" %>
 </div>

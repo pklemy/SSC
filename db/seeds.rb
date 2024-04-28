@@ -25,9 +25,9 @@ stores_attributes = [
       # t.string :name, null:false
 store_vendors_attributes = [
     [
-      { vendor_name: "ミート大国", url: "https://test.meat.com", phone: "111-111-1111", name: "yamada" },
-      { vendor_name: "魚王国", url: "https://test.fish.com", phone: "111-111-1111", name: "suzuki" },
-      { vendor_name: "野菜農園", url: "https://test.vegetable.com", phone: "111-111-1111", name: "satou" }
+      { vendor_name: "ミート大国", url: "https://test.meat.com", phone: "111-111-1111", name: "山田佑樹" },
+      { vendor_name: "魚王国", url: "https://test.fish.com", phone: "111-111-1111", name: "鈴木健太" },
+      { vendor_name: "野菜農園", url: "https://test.vegetable.com", phone: "111-111-1111", name: "矢野瑞稀" }
     ],
     [
       { vendor_name: "ドリンク都", url: "https://test.drink.com", phone: "111-111-1111", name: "tanaka" },

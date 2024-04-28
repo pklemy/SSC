@@ -1,7 +1,7 @@
 <div class="card">
   <div class="card-body">
     <div class="card-title d-flex justify-content-center">
-      <h2>業者一覧</h2>
+      <h2>--- 業者一覧 ---</h2>
     </div>
     
     <table class= "table table-bordered">
@@ -22,12 +22,12 @@
     </table>
     <div class="d-flex justify-content-center">
       <% if current_employee == @store.employee %>
-        <%= link_to "新規業者登録", new_store_vendor_path(@store), class: "border border-warning btn btn-secondary" %>
+        <%= link_to "新規業者登録", new_store_vendor_path(@store), class: "border border-warning btn btn-primary" %>
       <% end %>
     </div>
   </div>
 </div>
 
 <div class="d-flex justify-content-center mt-3">
-  <%= link_to "店舗詳細", store_path(@store), class: "border border-warning btn btn-secondary mb-4" %>
+  <%= link_to "店舗詳細画面へ", store_path(@store), class: "border border-warning btn btn-success mb-4" %>
 </div>
