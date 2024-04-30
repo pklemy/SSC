@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   validates :title, presence: true
   validates :body, presence: true
   
-  enum genre: { shift: 0, vendor: 1, lost_item: 2 }
+  enum genre: { shift: 0, vendor: 1, lost_item: 2, other: 3 }
   
   before_validation :vendor_check
   
