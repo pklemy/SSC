@@ -28,7 +28,7 @@
 
 - ER図
   
-![SSC drawio](https://github.com/pklemy/SSC/assets/147229077/6b2f4815-f62e-4bcc-89f1-705df3041d39)
+![SSC drawio](https://drive.google.com/file/d/1o3N0e5Z1KJVX5J1gjC9zvWEaMG3kXwQQ/view?usp=sharing)
 
 - テーブル定義書
   
@@ -44,6 +44,3 @@ https://docs.google.com/spreadsheets/d/1o7X-RltHR-tt8rI8R2pbwReQ9OjSj2oJ/edit?us
 - IDE：Cloud9
 ​
 ### 使用素材🎨
-- [写真](https://www.photo-ac.com/)
-- [イラスト](https://www.ac-illust.com/)
-- [モノクロイラスト](https://www.silhouette-ac.com/)
