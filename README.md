@@ -27,7 +27,7 @@
 
 
 - ER図
-  
+  https://github.com/pklemy/SSC/issues/1#issue-2294826745
 
 - テーブル定義書
   
