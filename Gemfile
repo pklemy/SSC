@@ -67,6 +67,7 @@ gem 'enum_help'
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
+  gem 'letter_opener_web'
 end
 
 gem "net-smtp"
