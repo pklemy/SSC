@@ -1,4 +1,4 @@
-## SSC / Staff sharing community
+## SSC / Staff sharing community ここからアクセスできます👉(​http://54.95.198.18/)
 ​
 ### サイト概要🌈
 #### サイトテーマ🍴
@@ -23,11 +23,11 @@
 ​
 #### 設計書📝
 後ほど作成予定。※進歩に合わせて随時更新
-- SSC要件定義
+- SSC要件定義    [SSC要件定義.pdf]()
 
 
 - ER図
-  https://drive.google.com/file/d/1o3N0e5Z1KJVX5J1gjC9zvWEaMG3kXwQQ/view?usp=sharing
+  https://github.com/pklemy/SSC/issues/1#issue-2294826745
 
 - テーブル定義書
   
