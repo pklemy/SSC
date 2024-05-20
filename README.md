@@ -1,4 +1,5 @@
-## SSC / Staff sharing community ここからアクセスできます👉(​https://staff-sharing-community.com/)
+## SSC / Staff sharing community ここからアクセスできます🔽
+####(​https://staff-sharing-community.com/)
 ​
 ### サイト概要🌈
 #### サイトテーマ🍴
