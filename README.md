@@ -1,4 +1,4 @@
-## SSC / Staff sharing community ここからアクセスできます👉(​http://54.95.198.18/)
+## SSC / Staff sharing community ここからアクセスできます👉(​https://staff-sharing-community.com/)
 ​
 ### サイト概要🌈
 #### サイトテーマ🍴
