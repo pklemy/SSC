@@ -23,7 +23,7 @@
 ​
 #### 設計書📝
 後ほど作成予定。※進歩に合わせて随時更新
-- SSC要件定義    [SSC要件定義.pdf]()
+- SSC要件定義    https://github.com/pklemy/SSC/issues/2#issue-2304912463
 
 
 - ER図
